@@ -7,6 +7,8 @@ from django.template.response import TemplateResponse as render_2  # то же �
 
 def index(request):
     return render(request, 'firstapp/index.html')
+    # data = {'age': 66}
+    # return render(request, 'firstapp/index.html', context=data)
     # # data = {'header': 'Передача параметров в шаблон Django',
     # #         'message': 'Загружен шаблон templates/firstapp/index_app.html'}
     # # return render(request, 'firstapp/index_app1.html', context=data)

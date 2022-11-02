@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Привет Django</title>
-</head>
-<body>
-    <h1>Контактные данные компании</h1>
-    <h2>""Интеллектуальные программные системы </h2>
-    <h3>{{work}}</h3>
-    <h3>Адрес: г. Москва, ул. Короленко, д. 24</h3>
-    <h4>templates/firstapp/contact.html</h4>
+{%extends 'firstapp/base.html'%} <!--взять из файла base.html-->
+{%block title%}contact{%endblock title%}  <!--блоки шаблонов-->
+{%block header%}Контактные данные компании{%endblock header%}
+{%block content%}
+<p>Интеллектуальные программные системы </p> <!--тег h1 заменяется в блоке на тег p-->
+<p>{{work}}</p> <!--взято из файла urls.py-->
+<p>Адрес: г. Москва, ул. Короленко, д. 24</p>
+<p>Связка шаблонов contact.html и base.html</p>
+{%endblock content%}
 
-</body>
-</html>

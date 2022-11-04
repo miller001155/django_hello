@@ -2,13 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Передача сложных данных</title>
+    <title>Модели в Django</title>
 </head>
-<body>
-    <h1>{{header}}</h1>
-    <p>Имя: {{user.name}} Age: {{user.age}}</p>
-    <p>Адрес: ул. {{addr.0}}, д. {{addr.1}}, кв. {{addr.2}}</p>
-    <p>Владеет языками: {{langs.0}}, {{langs.1}}</p>
-
+<body class="container">
+<form method="POST" action="create/">
+    {%csrf_token%}
+    <p>
+        <label>Введите имя</label><br>
+        <input type="text" name="name"/>
+    </p>
+    <p>
+        <label>Введите возраст</label><br>
+        <input type="number" name="age"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<!--{% if people.count > 0 %}-->
+<h2>Список пользователей</h2>
+    <table>
+        <tr><th>ID</th><th>Имя</th><th>Возраст</th></tr>
+        {%for person in people%}
+            <tr><td>{{person.id}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.age}}</td>
+            <td><a href="edit/{{person.id}}">Изменить</a>|
+            <a href="delete/{{person.id}}">Удалить</a></td></tr>
+        {%endfor%}
+    </table>
+<!--{%endif%}-->
 </body>
 </html>

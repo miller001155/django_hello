@@ -9,7 +9,7 @@ from .models import Person
 
 def index(request):
     people = Person.objects.all()
-    return render(request, 'index.html', {'people': 'people'})
+    return render(request, 'index.html', {'people': people})
     # if request.method == 'POST':
     #     userform = UserForm(request.POST)
     #     if userform.is_valid():  # метод проверки корректности
@@ -61,7 +61,7 @@ def edit(request, id):  # изменение данных в БД
             person.save()
             return HttpResponseRedirect('/')
         else:
-            return render(request, 'edit.thml', {'person': person})
+            return render(request, 'edit.html', {'person': person})
     except Person.DoesNotExist:
         return HttpResponseNotFound('<h2>Клиент не найдет<h2>')
 

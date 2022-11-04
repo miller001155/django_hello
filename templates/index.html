@@ -5,30 +5,30 @@
     <title>Модели в Django</title>
 </head>
 <body class="container">
-<form method="POST" action="create/">
-    {%csrf_token%}
-    <p>
-        <label>Введите имя</label><br>
-        <input type="text" name="name"/>
-    </p>
-    <p>
-        <label>Введите возраст</label><br>
-        <input type="number" name="age"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<!--{% if people.count > 0 %}-->
-<h2>Список пользователей</h2>
+    <form method="POST" action="create/">
+        {%csrf_token%}
+        <p>
+            <label>Введите имя</label><br>
+            <input type="text" name="name"/>
+        </p>
+        <p>
+            <label>Введите возраст</label><br>
+            <input type="number" name="age"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+    {% if people.count > 0 %}
+    <h2>Список пользователей</h2>
     <table>
         <tr><th>ID</th><th>Имя</th><th>Возраст</th></tr>
         {%for person in people%}
-            <tr><td>{{person.id}}</td>
+        <tr><td>{{person.id}}</td>
             <td>{{person.name}}</td>
             <td>{{person.age}}</td>
-            <td><a href="edit/{{person.id}}">Изменить</a>|
-            <a href="delete/{{person.id}}">Удалить</a></td></tr>
+            <td><a href="edit/{{person.id}}">Изменить</a>
+                <a href="delete/{{person.id}}">Удалить</a></td></tr>
         {%endfor%}
     </table>
-<!--{%endif%}-->
+    {%endif%}
 </body>
 </html>
